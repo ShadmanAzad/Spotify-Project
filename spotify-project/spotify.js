@@ -12,14 +12,12 @@ spotifyApi.clientCredentialsGrant().then(
       console.log('The access token expires in ' + data.body['expires_in']);
       console.log('The access token is ' + data.body['access_token']);
       spotifyApi.setAccessToken(data.body['access_token']);
-      spotifyApi.getArtistAlbums('43ZHCT0cAZBISjO8DG9PnE').then(
-        function(data) {
-          console.log('Artist albums', data.body);
-        },
-        function(err) {
-          console.error(err);
-        }
-      );
+      spotifyApi.getAudioAnalysisForTrack('3Qm86XLflmIXVm1wcwkgDK')
+      .then(function(data) {
+        console.log(data.body);
+      }, function(err) {
+        done(err);
+      });
      
     },
     function(err) {
