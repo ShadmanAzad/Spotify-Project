@@ -1,5 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap');
+
 .App {
   text-align: center;
+  font-family: 'Kaushan Script', cursive;
+  color: whitesmoke;
+  font-size: 2em;
 }
 
 .App-logo {
