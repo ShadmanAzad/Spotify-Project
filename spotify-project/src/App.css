@@ -2,9 +2,12 @@
 
 .App {
   text-align: center;
+  /* padding: 80px; */
+  margin-top: 100px;
   font-family: 'Kaushan Script', cursive;
   color: whitesmoke;
-  font-size: 2em;
+  font-size: 1.5em;
+  margin: 0;
 }
 
 .App-logo {
@@ -31,6 +34,15 @@
 
 .App-link {
   color: #61dafb;
+}
+
+.firstDescrip {
+  margin: 0 auto;
+  width: 50%;
+}
+
+.Heading {
+  margin-top: 80px;
 }
 
 @keyframes App-logo-spin {
