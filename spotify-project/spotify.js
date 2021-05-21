@@ -9,7 +9,7 @@ var spotifyApi = new SpotifyWebApi({
 
 spotifyApi.clientCredentialsGrant().then(
     function(data) {
-      console.log('The access token expires in ' + data.body['expires_in']);
+      console.log('The  access token expires in ' + data.body['expires_in']);
       console.log('The access token is ' + data.body['access_token']);
       spotifyApi.setAccessToken(data.body['access_token']);
       spotifyApi.getAudioAnalysisForTrack('3Qm86XLflmIXVm1wcwkgDK')
