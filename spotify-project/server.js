@@ -19,8 +19,8 @@ app.use(bodyParser.json({ limit: "10mb", extended: true }));
 app.use(bodyParser.urlencoded({ limit: "10mb", extended: true }));
 
 app.use("/", function (req, res,callback) {
-  console.log("*****");
-  console.log('code: ' + req.query.code);
+//  console.log("*****");
+ // console.log('code: ' + req.query.code);
   callback();
 },
 express.static(path.join(__dirname, "build", "index.html")));
@@ -51,7 +51,7 @@ app.get("/", function (req, res) {
     const data = {
       grant_type: 'authorization_code',
       code,
-      redirect_uri: "http://localhost:5000/"
+      redirect_uri: "http://localhost:5000/",
     };
   
     // const serverpost = {
@@ -64,36 +64,47 @@ app.get("/", function (req, res) {
 
    // https://accounts.spotify.com/api/token body: { grant_type, code, client_id}
    // https://accounts.spotify.com/api/token?grant_type=authorization_code&code=1y2727272&
-    console.log("server has received", code);
+    //console.log("server has received", code);
     axios.post(`https://accounts.spotify.com/api/token`,qs.stringify(data), headers)
       .then(response => {
         const {access_token} = response.data;
         spotifyApi.setAccessToken(access_token);
-        spotifyApi.getMe()
-        .then(function(data) {
-          console.log('Some information about the authenticated user', data.body);
-        }, function(err) {
-          console.log('Something went wrong!', err);
-        });
-      
+        console.log(access_token);
+        
 
-          
-       /* spotifyApi.getAudioAnalysisForTrack('3Qm86XLflmIXVm1wcwkgDK')
-        .then(function(data) {
-        }, function(err) {
-          done(err);
+        axios({
+          method: 'get',
+          url: 'https://api.spotify.com/v1/me/top/tracks',
+          headers: {'Authorization': "Bearer " + access_token}
+        })
+          .then(function(res) {
+         console.log(res)
+        });
+
+
+        
+      
+  /* spotifyApi.getMyTopTracks()
+          .then(function(data) {
+            let topTracks = data.body.items;
+            console.log(topTracks);
+          }, function(err) {
+            console.log(spotifyApi)
+           // console.log(JSON.stringify(err));
+            return res.json(err);
           });
-          */
+        
         return res.json(response.data);
-      }).catch(err => {
-       console.log("error", err);
+        */
+     
+
       })
       
       
   });
 
 app.get('/login', function(req, res){
-  var scopes = 'user-read-private user-read-email';
+  var scopes = 'user-read-private user-read-email user-top-read';
   res.redirect('https://accounts.spotify.com/authorize' +
   '?response_type=code' +
   '&client_id=' + clientId +
