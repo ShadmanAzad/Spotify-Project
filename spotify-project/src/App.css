@@ -1,10 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
 .App {
   text-align: center;
   /* padding: 80px; */
   margin-top: 100px;
-  font-family: 'Kaushan Script', cursive;
+  font-family: 'Poppins', sans-serif;
   color: rgb(255, 255, 255);
   font-size: 1.5em;
   margin: 0;
@@ -48,6 +48,27 @@
   background-repeat: no-repeat;
   background-size: 100% 1200px; 
   height: auto;
+}
+
+.box {
+  background-color: rgba(0,0,0,0.4);
+  width: 50%;
+  margin: 0 auto;
+  padding: 25px;
+  border-radius: 30px;
+}
+
+.buttonPad {
+  padding-top: 60px;
+}
+
+.button {
+  text-align: center;
+  background-color: rgb(40, 157, 81);
+  border-radius: 15px;
+  padding: 14px 40px;
+  border-color: rgb(51, 140, 82);
+
 }
 
 .Nav .navbar {

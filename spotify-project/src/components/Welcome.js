@@ -17,7 +17,7 @@ class Welcome extends React.Component {
   render() {
     return (
       <div className="Heading">
-        <h1>Welcome to Spotify Project</h1>
+        <h1>Welcome to Spotify Mood</h1>
         <Description />
       </div>
     );

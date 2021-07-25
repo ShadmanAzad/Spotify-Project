@@ -57,13 +57,19 @@ app.post("/preToken", async function (req, res) {
       })
         .then(function (res) {
           const topTracks = res.data.items.map((items) => {
-            const songid = items.id;
+            const container = {};
+            container.songid = items.id;
+            container.songname = items.name;
+            container.artistsname = items.artists[0].name;
 
-            return songid;
+            return container;
           });
+         //console.log(topTracks);
           return topTracks;
         })
         .then(function (res) {
+          const trackid = items.id;
+          console.log(trackid);
           const encodedIds = encodeURIComponent(res.toString());
 
           axios({
@@ -72,11 +78,30 @@ app.post("/preToken", async function (req, res) {
             headers: { Authorization: "Bearer " + access_token },
           })
             .then((response) => {
-              console.log(response.data.audio_features);
+              const moods = response.data.audio_features.map((audio_features) => {
+                let valenceScore = audio_features.valence;
+
+                if (valenceScore < 0.3){
+                  return 'Sad';
+                }
+                else if (valenceScore < 0.69){
+                  return 'Chill';
+                }
+                else if (valenceScore < 0.8){
+                  return 'Upbeat';
+                }
+                else {
+                  return 'Happy';
+                }
+              })
+              
+              console.log(moods)
+              return  idTracks;
             })
             .catch((err) => {
               console.log(err);
             });
+            return trackid;
         });
     });
 });

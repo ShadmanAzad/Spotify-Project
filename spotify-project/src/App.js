@@ -25,29 +25,27 @@ import result from "./result.png";
 function App() {
   return (
     <>
-      <div className="Nav">
+      {/* <div className="Nav">
         <Navbar expand="md">
           <NavbarBrand href="/">Spotify Project</NavbarBrand>
           <NavbarToggler />
           <Collapse navbar>
             <Nav className="ml-auto" navbar>
               <NavItem>
-                <NavLink href="/components/">About</NavLink>
+                <NavLink href="/components/"></NavLink>
               </NavItem>
               <NavItem>
                 <NavLink href="https://github.com/reactstrap/reactstrap">
-                  Sign Up
                 </NavLink>
               </NavItem>
               <NavItem>
                 <NavLink href="https://github.com/reactstrap/reactstrap">
-                  Login
                 </NavLink>
               </NavItem>
             </Nav>
           </Collapse>
         </Navbar>
-      </div>
+      </div> */}
       <div className="App">
         <header className="">
           <p>
@@ -55,8 +53,7 @@ function App() {
             <Container>
               <div className="rows">
                 <h1 className="para">
-                  Lorem Ipsum is simply dummy text of the printing and
-                  typesetting industry.
+                  How does it work ?
                 </h1>
                 <Row>
                   <Col>

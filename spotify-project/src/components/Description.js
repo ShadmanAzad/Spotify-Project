@@ -1,13 +1,20 @@
 import React from 'react';
 
 
+
 class Description extends React.Component {
     render () {
         return (
-        <p className = "firstDescrip"> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-            It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
-            It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. 
+            <div className = "box">
+        <p className = "firstDescrip">
+            Find the mood for your top tracks on your Spotfiy. By clicking the button, log into your spotify account, the application will analyze your listening history and the mood for your top tracks will be shown.
         </p>
+        <div className ="buttonPad">
+        <a href="/login">
+            <button className = "button">Connect to Spotify</button>
+        </a>
+        </div>
+        </div>
         );
     }
 }
