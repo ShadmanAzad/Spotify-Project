@@ -55,8 +55,8 @@ app.post("/preToken", async function (req, res) {
         url: "https://api.spotify.com/v1/me/top/tracks",
         headers: { Authorization: "Bearer " + access_token },
       })
-        .then(function (res) {
-          const topTracks = res.data.items.map((items) => {
+        .then(function (tracks) {
+          const topTracks = tracks.data.items.map((items) => {
             const container = {};
             container.songid = items.id;
             container.songname = items.name;
@@ -67,18 +67,17 @@ app.post("/preToken", async function (req, res) {
          //console.log(topTracks);
           return topTracks;
         })
-        .then(function (res) {
-          const trackid = items.id;
-          console.log(trackid);
-          const encodedIds = encodeURIComponent(res.toString());
+        .then(function (filteredTracks) {
+          const trackid = filteredTracks.map((res) => res.songid);
+          const encodedIds = encodeURIComponent(trackid.toString());
 
           axios({
             method: "get",
             url: `https://api.spotify.com/v1/audio-features?ids=${encodedIds}`,
             headers: { Authorization: "Bearer " + access_token },
           })
-            .then((response) => {
-              const moods = response.data.audio_features.map((audio_features) => {
+            .then((filtered) => {
+              const moods = filtered.data.audio_features.map((audio_features) => {
                 let valenceScore = audio_features.valence;
 
                 if (valenceScore < 0.3){
@@ -94,15 +93,15 @@ app.post("/preToken", async function (req, res) {
                   return 'Happy';
                 }
               })
-              
-              console.log(moods)
-              return  idTracks;
+              for (i = 0; i < filtered.length; i++){
+              filtered[i].mood = moods[i];
+              }
+              res.json(filtered);
             })
             .catch((err) => {
               console.log(err);
             });
-            return trackid;
-        });
+        })
     });
 });
 
