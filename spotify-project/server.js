@@ -48,9 +48,9 @@ app.post("/preToken", async function (req, res) {
     .then((response) => {
       const { access_token } = response.data;
       spotifyApi.setAccessToken(access_token);
-      console.log(access_token);
+     // console.log(access_token);
 
-      axios({
+   axios({
         method: "get",
         url: "https://api.spotify.com/v1/me/top/tracks",
         headers: { Authorization: "Bearer " + access_token },
@@ -70,8 +70,9 @@ app.post("/preToken", async function (req, res) {
         .then(function (filteredTracks) {
           const trackid = filteredTracks.map((res) => res.songid);
           const encodedIds = encodeURIComponent(trackid.toString());
+         // console.log(filteredTracks, "filtered Tracks");
 
-          axios({
+       axios({
             method: "get",
             url: `https://api.spotify.com/v1/audio-features?ids=${encodedIds}`,
             headers: { Authorization: "Bearer " + access_token },
@@ -93,10 +94,11 @@ app.post("/preToken", async function (req, res) {
                   return 'Happy';
                 }
               })
-              for (i = 0; i < filtered.length; i++){
-              filtered[i].mood = moods[i];
+              for (i = 0; i < filteredTracks.length; i++){
+               filteredTracks[i].mood = moods[i];
               }
-              res.json(filtered);
+              res.json(filteredTracks);
+              return;
             })
             .catch((err) => {
               console.log(err);
