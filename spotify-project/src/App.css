@@ -96,9 +96,12 @@
 }
 
 .table {
-  width: 50%;
   margin: 0 auto;
   display: center;
+}
+
+.title {
+  background-color: #454d55;
 }
 
 @keyframes App-logo-spin {

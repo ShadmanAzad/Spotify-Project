@@ -11,6 +11,7 @@ class Welcome extends React.Component {
       tracks: []
     };
     
+  
 
   }
   componentDidMount() {
@@ -28,11 +29,12 @@ class Welcome extends React.Component {
     }
   }
 
-  renderTracks(track){
+  renderTracks(track, i){
     console.log(track);
     const {songname, artistsname, mood, albumcover} = track;
     return (
     <tr>
+      <th>{i+1}</th>
       <th scope="row"><img src = {albumcover}></img></th>
       <td>{songname}</td>
       <td>{artistsname}</td>
@@ -44,10 +46,14 @@ class Welcome extends React.Component {
   render() {
     if(this.state.isConnected){
       return (
+        <div className = "title">
+          <h2> Top Tracks and Mood</h2>
         <div className = "table">
+          
       <Table dark>
         <thead>
         <tr>
+          <th></th>
           <th></th>
           <th>Track</th>
           <th>Artist</th>
@@ -55,9 +61,10 @@ class Welcome extends React.Component {
         </tr>
       </thead>
       <tbody>
-        {this.state.tracks.map((track) => this.renderTracks(track))}
+        {this.state.tracks.map((track, i) => this.renderTracks(track, i))}
       </tbody>
       </Table>
+      </div>
       </div>
       );
 
