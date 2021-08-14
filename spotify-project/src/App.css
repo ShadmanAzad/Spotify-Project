@@ -39,6 +39,7 @@
 .firstDescrip {
   margin: 0 auto;
   width: 50%;
+  min-width: 250px;
 }
 
 .Heading {
@@ -56,6 +57,7 @@
   margin: 0 auto;
   padding: 25px;
   border-radius: 30px;
+  min-width: 286px;
 }
 
 .buttonPad {
@@ -93,6 +95,12 @@
   margin-top: 40px;
 }
 
+.table {
+  width: 50%;
+  margin: 0 auto;
+  display: center;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
@@ -105,12 +113,15 @@
 
 
 @media (min-width: 1024px){
- /* .firstDescrip {
+ .firstDescrip {
+    margin: 0 auto;
     width: 50%;
-  } */
+    min-width: 250px;
+
+  }
 
   .Heading{
-    height: 600px;
+    padding-bottom: 100px;
   }
 
 

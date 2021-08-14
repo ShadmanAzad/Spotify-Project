@@ -29,10 +29,11 @@ class Welcome extends React.Component {
   }
 
   renderTracks(track){
-    const {songname, artistsname, mood} = track;
+    console.log(track);
+    const {songname, artistsname, mood, albumcover} = track;
     return (
     <tr>
-      <th scope="row"></th>
+      <th scope="row"><img src = {albumcover}></img></th>
       <td>{songname}</td>
       <td>{artistsname}</td>
       <td>{mood}</td>
@@ -43,6 +44,7 @@ class Welcome extends React.Component {
   render() {
     if(this.state.isConnected){
       return (
+        <div className = "table">
       <Table dark>
         <thead>
         <tr>
@@ -56,6 +58,7 @@ class Welcome extends React.Component {
         {this.state.tracks.map((track) => this.renderTracks(track))}
       </tbody>
       </Table>
+      </div>
       );
 
     }

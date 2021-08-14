@@ -61,9 +61,11 @@ app.post("/preToken", async function (req, res) {
             container.songid = items.id;
             container.songname = items.name;
             container.artistsname = items.artists[0].name;
+            container.albumcover = items.album.images[2].url;
 
             return container;
           });
+          // console.log(tracks.data.items[0].album.images[2].url);
          //console.log(topTracks);
           return topTracks;
         })
